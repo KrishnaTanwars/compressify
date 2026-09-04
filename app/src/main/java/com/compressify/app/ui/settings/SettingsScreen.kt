@@ -1,7 +1,5 @@
 package com.compressify.app.ui.settings
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,8 +23,6 @@ import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.Folder
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lock
-import androidx.compose.material.icons.outlined.Share
-import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -48,7 +44,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -71,7 +66,6 @@ fun SettingsScreen(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
     var showPrivacyDialog by remember { mutableStateOf(false) }
     var showThemeMenu by remember { mutableStateOf(false) }
     var showPresetMenu by remember { mutableStateOf(false) }
@@ -208,55 +202,12 @@ fun SettingsScreen(
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
 
-                    // Rate App
-                    SettingsRow(
-                        icon = Icons.Outlined.Star,
-                        iconTint = Cyan50,
-                        title = "Rate Compressify",
-                        subtitle = "Support independent development on Google Play",
-                        onClick = {
-                            val uri = Uri.parse("market://details?id=${context.packageName}")
-                            val playIntent = Intent(Intent.ACTION_VIEW, uri)
-                            if (playIntent.resolveActivity(context.packageManager) != null) {
-                                context.startActivity(playIntent)
-                            }
-                        }
-                    )
-
-                    HorizontalDivider(
-                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
-                        modifier = Modifier.padding(horizontal = 16.dp)
-                    )
-
-                    // Share App
-                    SettingsRow(
-                        icon = Icons.Outlined.Share,
-                        iconTint = Indigo50,
-                        title = "Share Compressify",
-                        subtitle = "Recommend Compressify to friends and colleagues",
-                        onClick = {
-                            val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                                type = "text/plain"
-                                putExtra(
-                                    Intent.EXTRA_TEXT,
-                                    "Check out Compressify: Fast, private, offline image compressor for Android! https://play.google.com/store/apps/details?id=${context.packageName}"
-                                )
-                            }
-                            context.startActivity(Intent.createChooser(shareIntent, "Share Compressify"))
-                        }
-                    )
-
-                    HorizontalDivider(
-                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
-                        modifier = Modifier.padding(horizontal = 16.dp)
-                    )
-
                     // App Version
                     SettingsRow(
                         icon = Icons.Outlined.Info,
                         iconTint = MaterialTheme.colorScheme.onSurfaceVariant,
                         title = "Version",
-                        subtitle = "1.0.0 (Play Store Production Release)",
+                        subtitle = "1.0.0",
                         onClick = {}
                     )
                 }

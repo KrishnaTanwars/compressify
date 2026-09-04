@@ -160,16 +160,7 @@ Output: `app/build/outputs/bundle/release/app-release.aab`
 
 ---
 
-## 💰 Monetization Architecture
-
-Compressify is designed with an extensible modular structure for future monetization without degrading the core user experience:
-- **Free Version**: Full offline compression, standard presets, single-image processing.
-- **Future Pro Extension**:
-  - Interface separation in `ImageCompressor` allows swapping in batch processing or target file-size compression (`Compress to exactly 200 KB`).
-  - Ad placements (if enabled later) can be plugged via non-intrusive banner anchors without touching core compression coroutines.
-
----
-
 ## 📄 License
 
 Licensed under the Apache License 2.0. See LICENSE for details.
+
