@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Compressify</string>
+    <string name="app_tagline">Professional Image Compressor &amp; Optimizer</string>
+    <string name="home_supporting_text">Reduce image size up to 90% while keeping original visual quality. 100% on-device and private.</string>
+    <string name="home_badge_text">100% On-Device • Zero Server Uploads • Ultra Fast</string>
+    <string name="select_image">Select Image to Compress</string>
+    <string name="select_another_image">Select Another Image</string>
+    <string name="compress_image">Compress Image Now</string>
+    <string name="compressing">Optimizing Image…</string>
+    <string name="save_image">Save to Gallery</string>
+    <string name="share_image">Share Image</string>
+    <string name="image_saved_success">Saved to Pictures/Compressify</string>
+    <string name="save_failed">Failed to save image. Please check available storage space.</string>
+    <string name="share_failed">Unable to share image.</string>
+    
+    <!-- Presets -->
+    <string name="preset_high_quality">High Quality</string>
+    <string name="preset_high_quality_desc">Best visual fidelity • Minor size reduction</string>
+    
+    <string name="preset_balanced">Balanced Optimization</string>
+    <string name="preset_balanced_desc">Recommended • Optimal balance of quality &amp; size</string>
+    
+    <string name="preset_small_size">Maximum Compression</string>
+    <string name="preset_small_size_desc">Smallest possible file • Ideal for email &amp; web</string>
+    
+    <string name="preset_target_size">Target File Size</string>
+    <string name="preset_target_size_desc">Compress to exact target size (e.g. 100 KB, 500 KB, 1 MB)</string>
+
+    <string name="preset_custom">Custom Quality</string>
+    <string name="preset_custom_desc">Fine-tune compression slider to your exact preference</string>
+
+    <!-- Error strings -->
+    <string name="error_image_too_large">This photo is too large to process safely on this device. Please choose another image.</string>
+    <string name="error_unsupported_format">Unsupported photo format. Please select a JPG, JPEG, PNG, or WebP photo.</string>
+    <string name="error_generic">Unable to process photo. Please try again.</string>
+
+    <!-- Privacy Statement -->
+    <string name="privacy_statement">🔒 Privacy Guarantee: Your images are processed 100% locally on your device and are never uploaded to any cloud server.</string>
+</resources>
