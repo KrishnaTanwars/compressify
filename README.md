@@ -1,7 +1,7 @@
 # Compressify — Image Compressor
 
 <p align="center">
-  <img src="app/src/main/res/drawable/ic_launcher_foreground.xml" width="96" height="96" alt="Compressify Logo" />
+  <img src="art/logo.png" width="128" height="128" alt="Compressify Logo" />
 </p>
 
 <p align="center">

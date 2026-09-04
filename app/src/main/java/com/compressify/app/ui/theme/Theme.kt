@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -17,49 +18,55 @@ import androidx.core.view.WindowCompat
 import com.compressify.app.data.model.ThemeMode
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Indigo60,
-    onPrimary = DarkBackground,
+    primary = Indigo50,
+    onPrimary = Color.White,
     primaryContainer = Indigo20,
-    onPrimaryContainer = Indigo80,
-    secondary = Sky60,
+    onPrimaryContainer = Indigo90,
+    secondary = Cyan50,
     onSecondary = DarkBackground,
-    secondaryContainer = DarkSurfaceVariant,
-    onSecondaryContainer = Sky80,
-    tertiary = Emerald60,
+    secondaryContainer = Cyan20,
+    onSecondaryContainer = Cyan80,
+    tertiary = Emerald50,
     onTertiary = DarkBackground,
+    tertiaryContainer = Emerald20,
+    onTertiaryContainer = Emerald80,
     background = DarkBackground,
     onBackground = DarkOnBackground,
     surface = DarkSurface,
     onSurface = DarkOnSurface,
     surfaceVariant = DarkSurfaceVariant,
     onSurfaceVariant = DarkOnSurfaceVariant,
-    outline = DarkOutline
+    outline = DarkOutline,
+    outlineVariant = DarkOutlineVariant
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = Indigo40,
-    onPrimary = LightSurface,
-    primaryContainer = Indigo80.copy(alpha = 0.3f),
+    onPrimary = Color.White,
+    primaryContainer = Indigo90.copy(alpha = 0.35f),
     onPrimaryContainer = Indigo20,
-    secondary = Sky40,
-    onSecondary = LightSurface,
-    secondaryContainer = Sky80.copy(alpha = 0.3f),
-    onSecondaryContainer = LightOnSurface,
+    secondary = Cyan40,
+    onSecondary = Color.White,
+    secondaryContainer = Cyan90.copy(alpha = 0.45f),
+    onSecondaryContainer = Cyan20,
     tertiary = Emerald40,
-    onTertiary = LightSurface,
+    onTertiary = Color.White,
+    tertiaryContainer = Emerald90.copy(alpha = 0.45f),
+    onTertiaryContainer = Emerald20,
     background = LightBackground,
     onBackground = LightOnBackground,
     surface = LightSurface,
     onSurface = LightOnSurface,
     surfaceVariant = LightSurfaceVariant,
     onSurfaceVariant = LightOnSurfaceVariant,
-    outline = LightOutline
+    outline = LightOutline,
+    outlineVariant = LightOutlineVariant
 )
 
 @Composable
 fun CompressifyTheme(
     themeMode: ThemeMode = ThemeMode.SYSTEM,
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val darkTheme = when (themeMode) {

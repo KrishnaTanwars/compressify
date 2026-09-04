@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Outer Squircle with Gradient Stroke & Background -->
+    <path
+        android:pathData="M24,8 L72,8 A16,16 0 0 1 88,24 L88,72 A16,16 0 0 1 72,88 L24,88 A16,16 0 0 1 8,72 L8,24 A16,16 0 0 1 24,8 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="8"
+                android:startY="8"
+                android:endX="88"
+                android:endY="88"
+                android:type="linear">
+                <item android:color="#1A1F36" android:offset="0.0" />
+                <item android:color="#0F1322" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Subtle Inner Border Highlight -->
+    <path
+        android:pathData="M25,10 L71,10 A14,14 0 0 1 85,24 L85,72 A14,14 0 0 1 71,86 L25,86 A14,14 0 0 1 11,72 L11,24 A14,14 0 0 1 25,10 Z"
+        android:strokeWidth="1.5">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="11"
+                android:startY="10"
+                android:endX="85"
+                android:endY="86"
+                android:type="linear">
+                <item android:color="#4F46E5" android:offset="0.0" />
+                <item android:color="#06B6D4" android:offset="0.5" />
+                <item android:color="#1E293B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Top Inward Compression Chevron Bracket -->
+    <path
+        android:pathData="M32,28 L48,40 L64,28"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="32"
+                android:startY="28"
+                android:endX="64"
+                android:endY="40"
+                android:type="linear">
+                <item android:color="#818CF8" android:offset="0.0" />
+                <item android:color="#38BDF8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Bottom Inward Compression Chevron Bracket -->
+    <path
+        android:pathData="M32,68 L48,56 L64,68"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="32"
+                android:startY="68"
+                android:endX="64"
+                android:endY="56"
+                android:type="linear">
+                <item android:color="#38BDF8" android:offset="0.0" />
+                <item android:color="#34D399" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Central Precision Aperture / Diamond Core -->
+    <path
+        android:pathData="M48,42 L54,48 L48,54 L42,48 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="42"
+                android:startY="42"
+                android:endX="54"
+                android:endY="54"
+                android:type="linear">
+                <item android:color="#FFFFFF" android:offset="0.0" />
+                <item android:color="#38BDF8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Left and Right Framing Accent Brackets -->
+    <path
+        android:pathData="M24,42 L24,54"
+        android:strokeColor="#6366F1"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+
+    <path
+        android:pathData="M72,42 L72,54"
+        android:strokeColor="#06B6D4"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+
+</vector>

@@ -2,7 +2,11 @@ package com.compressify.app.ui.settings
 
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -28,6 +32,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -41,16 +46,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.compressify.app.R
 import com.compressify.app.data.model.CompressionPreset
 import com.compressify.app.data.model.ThemeMode
 import com.compressify.app.ui.components.AppTopBar
 import com.compressify.app.ui.components.PrivacyDialog
+import com.compressify.app.ui.theme.Cyan50
+import com.compressify.app.ui.theme.Emerald50
+import com.compressify.app.ui.theme.Indigo50
 
 @Composable
 fun SettingsScreen(
@@ -75,6 +85,7 @@ fun SettingsScreen(
         topBar = {
             AppTopBar(
                 title = "Settings",
+                showBrandLogo = false,
                 onBackClick = onBackClick
             )
         },
@@ -88,17 +99,19 @@ fun SettingsScreen(
                 .padding(16.dp)
         ) {
             // Preferences Section
-            SettingsSectionHeader(title = "Compression & Appearance")
+            SettingsSectionHeader(title = "Compression & Theme")
 
             Card(
-                shape = RoundedCornerShape(18.dp),
+                shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column {
                     // Theme Setting
                     SettingsRow(
                         icon = Icons.Outlined.DarkMode,
+                        iconTint = Indigo50,
                         title = "App Theme",
                         subtitle = themeMode.title,
                         onClick = { showThemeMenu = true }
@@ -119,9 +132,15 @@ fun SettingsScreen(
                         }
                     }
 
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+
                     // Default Preset Setting
                     SettingsRow(
                         icon = Icons.Outlined.Tune,
+                        iconTint = Cyan50,
                         title = "Default Compression Level",
                         subtitle = defaultPreset.title,
                         onClick = { showPresetMenu = true }
@@ -147,9 +166,15 @@ fun SettingsScreen(
                         }
                     }
 
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+
                     // Save Location info
                     SettingsRow(
                         icon = Icons.Outlined.Folder,
+                        iconTint = Emerald50,
                         title = "Save Location",
                         subtitle = "Pictures/Compressify (Scoped Storage)",
                         onClick = {}
@@ -160,25 +185,33 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             // About & Privacy Section
-            SettingsSectionHeader(title = "About & Privacy")
+            SettingsSectionHeader(title = "About & Guarantee")
 
             Card(
-                shape = RoundedCornerShape(18.dp),
+                shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column {
                     // Privacy Policy
                     SettingsRow(
                         icon = Icons.Outlined.Lock,
+                        iconTint = Emerald50,
                         title = "Privacy & Security Guarantee",
                         subtitle = "100% on-device local compression, zero server uploads",
                         onClick = { showPrivacyDialog = true }
                     )
 
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+
                     // Rate App
                     SettingsRow(
                         icon = Icons.Outlined.Star,
+                        iconTint = Cyan50,
                         title = "Rate Compressify",
                         subtitle = "Support independent development on Google Play",
                         onClick = {
@@ -190,9 +223,15 @@ fun SettingsScreen(
                         }
                     )
 
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+
                     // Share App
                     SettingsRow(
                         icon = Icons.Outlined.Share,
+                        iconTint = Indigo50,
                         title = "Share Compressify",
                         subtitle = "Recommend Compressify to friends and colleagues",
                         onClick = {
@@ -207,9 +246,15 @@ fun SettingsScreen(
                         }
                     )
 
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+
                     // App Version
                     SettingsRow(
                         icon = Icons.Outlined.Info,
+                        iconTint = MaterialTheme.colorScheme.onSurfaceVariant,
                         title = "Version",
                         subtitle = "1.0.0 (Play Store Production Release)",
                         onClick = {}
@@ -217,12 +262,13 @@ fun SettingsScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(28.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             // Privacy Commitment Callout
             Surface(
-                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f),
-                shape = RoundedCornerShape(14.dp),
+                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f),
+                shape = RoundedCornerShape(16.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
@@ -230,7 +276,7 @@ fun SettingsScreen(
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(14.dp)
+                    modifier = Modifier.padding(16.dp)
                 )
             }
         }
@@ -241,7 +287,7 @@ fun SettingsScreen(
 private fun SettingsSectionHeader(title: String) {
     Text(
         text = title,
-        style = MaterialTheme.typography.labelLarge,
+        style = MaterialTheme.typography.labelMedium,
         fontWeight = FontWeight.Bold,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
@@ -251,6 +297,7 @@ private fun SettingsSectionHeader(title: String) {
 @Composable
 private fun SettingsRow(
     icon: ImageVector,
+    iconTint: Color,
     title: String,
     subtitle: String,
     onClick: () -> Unit,
@@ -259,19 +306,26 @@ private fun SettingsRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
             .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.size(24.dp)
-        )
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(iconTint.copy(alpha = 0.12f)),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = iconTint,
+                modifier = Modifier.size(20.dp)
+            )
+        }
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(14.dp))
 
         Column(modifier = Modifier.weight(1f)) {
             Text(
@@ -283,7 +337,7 @@ private fun SettingsRow(
             Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = subtitle,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }

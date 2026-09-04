@@ -1,5 +1,6 @@
 package com.compressify.app.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.compressify.app.ui.theme.Emerald50
 
 @Composable
 fun PrivacyDialog(
@@ -27,8 +29,8 @@ fun PrivacyDialog(
         onDismissRequest = onDismissRequest,
         title = {
             Text(
-                text = "Privacy Policy",
-                style = MaterialTheme.typography.headlineSmall,
+                text = "Privacy & Security Guarantee",
+                style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
         },
@@ -40,54 +42,63 @@ fun PrivacyDialog(
             ) {
                 Card(
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)
+                        containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f)
                     ),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = RoundedCornerShape(14.dp),
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
                 ) {
                     Text(
-                        text = "🔒 100% On-Device Processing",
-                        style = MaterialTheme.typography.titleMedium,
+                        text = "🔒 100% On-Device Local Processing",
+                        style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.padding(12.dp)
                     )
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(14.dp))
 
                 Text(
-                    text = "Your images are processed entirely on your device and are NEVER uploaded to any servers.",
-                    style = MaterialTheme.typography.bodyLarge,
+                    text = "Your images are processed entirely on your device and are NEVER uploaded to any servers or external clouds.",
+                    style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
                     text = "• Zero Cloud Uploads: Compression runs locally in memory.\n" +
                             "• Zero Account Required: No logins, passwords, or personal profiles.\n" +
                             "• Zero Analytics Tracking: We do not track or inspect your photos.\n" +
                             "• Scoped Storage: We only write compressed output to Pictures/Compressify when you choose to save.",
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(14.dp))
 
                 Text(
-                    text = "Your photos remain exclusively yours.",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.tertiary
+                    text = "Your photos remain private and safe.",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = Emerald50
                 )
             }
         },
         confirmButton = {
-            TextButton(onClick = onDismissRequest) {
-                Text("Got It")
+            TextButton(
+                onClick = onDismissRequest,
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text(
+                    text = "Understood",
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
+                )
             }
         },
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(22.dp),
         containerColor = MaterialTheme.colorScheme.surface
     )
 }
