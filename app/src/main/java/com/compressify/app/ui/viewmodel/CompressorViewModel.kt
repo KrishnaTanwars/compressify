@@ -87,7 +87,7 @@ class CompressorViewModel(application: Application) : AndroidViewModel(applicati
                 },
                 onFailure = { _ ->
                     _isCompressing.value = false
-                    _errorMessage.value = "Unable to read this image. Please select a valid photo."
+                    _errorMessage.value = getApplication<Application>().getString(com.compressify.app.R.string.error_read_image)
                 }
             )
         }
@@ -141,8 +141,8 @@ class CompressorViewModel(application: Application) : AndroidViewModel(applicati
                     _isCompressing.value = false
                     val humanMessage = when {
                         error.message?.contains("large", ignoreCase = true) == true ->
-                            "This image is too large to process on this device. Try another image."
-                        else -> "Compression failed. Please try a different preset or image."
+                            getApplication<Application>().getString(com.compressify.app.R.string.error_image_too_large)
+                        else -> getApplication<Application>().getString(com.compressify.app.R.string.error_generic)
                     }
                     _errorMessage.value = humanMessage
                 }
@@ -160,11 +160,11 @@ class CompressorViewModel(application: Application) : AndroidViewModel(applicati
                 onSuccess = {
                     _isSaving.value = false
                     _isSaved.value = true
-                    _toastMessage.value = "Saved to Pictures/Compressify"
+                    _toastMessage.value = getApplication<Application>().getString(com.compressify.app.R.string.image_saved_success)
                 },
                 onFailure = {
                     _isSaving.value = false
-                    _errorMessage.value = "Failed to save image to gallery. Please check storage space."
+                    _errorMessage.value = getApplication<Application>().getString(com.compressify.app.R.string.save_failed)
                 }
             )
         }

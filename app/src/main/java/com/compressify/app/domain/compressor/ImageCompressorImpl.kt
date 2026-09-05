@@ -273,7 +273,6 @@ class ImageCompressorImpl(
     ): CompressionResult {
         var lowQ = 10
         var highQ = 95
-        var bestQuality = 50
         var bestTempFile: File? = null
         var bestSize = Long.MAX_VALUE
         var finalWidth = processedBitmap.width
@@ -294,7 +293,6 @@ class ImageCompressorImpl(
 
             val size = tempFile.length()
             if (size <= targetSizeBytes) {
-                bestQuality = midQ
                 bestTempFile = tempFile
                 bestSize = size
                 lowQ = midQ + 1

@@ -68,11 +68,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.compressify.app.R
 import com.compressify.app.data.model.CompressionConfig
 import com.compressify.app.data.model.CompressionPreset
 import com.compressify.app.data.model.ImageMetadata
@@ -118,7 +120,7 @@ fun PreviewScreen(
         modifier = modifier.fillMaxSize(),
         topBar = {
             AppTopBar(
-                title = "Compression Options",
+                title = stringResource(R.string.preview_title),
                 showBrandLogo = false,
                 onBackClick = onBackClick
             )
@@ -152,7 +154,7 @@ fun PreviewScreen(
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
-                                text = "Optimizing Image…",
+                                text = stringResource(R.string.compressing_now),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold
                             )
@@ -164,7 +166,7 @@ fun PreviewScreen(
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
-                                text = "Compress Image Now",
+                                text = stringResource(R.string.compress_image),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 17.sp
@@ -241,13 +243,13 @@ fun PreviewScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         MetricInfoChip(
-                            label = "ORIGINAL SIZE",
+                            label = stringResource(R.string.metric_original_size),
                             value = Formatters.formatFileSize(metadata.byteSize),
                             highlightColor = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.weight(1f)
                         )
                         MetricInfoChip(
-                            label = "RESOLUTION",
+                            label = stringResource(R.string.metric_resolution),
                             value = metadata.resolutionString,
                             highlightColor = Cyan50,
                             modifier = Modifier.weight(1f)
@@ -264,7 +266,7 @@ fun PreviewScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Compression Level",
+                    text = stringResource(R.string.compression_level),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -275,7 +277,7 @@ fun PreviewScreen(
                     shape = RoundedCornerShape(6.dp)
                 ) {
                     Text(
-                        text = "SELECT ONE",
+                        text = stringResource(R.string.select_one),
                         style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
@@ -342,7 +344,7 @@ fun PreviewScreen(
             ) {
                 Surface(
                     color = MaterialTheme.colorScheme.surface,
-                    shape = RoundedCornerShape(18.dp),
+                    shape = RoundedCornerShape(16.dp),
                     border = BorderStroke(1.dp, Cyan50.copy(alpha = 0.4f)),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -350,7 +352,7 @@ fun PreviewScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "Set a maximum file size limit. Compressify will downscale and compress to ensure the output stays strictly beneath it.",
+                            text = stringResource(R.string.target_size_info),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -358,7 +360,7 @@ fun PreviewScreen(
                         Spacer(modifier = Modifier.height(12.dp))
 
                         Text(
-                            text = "Quick Presets:",
+                            text = stringResource(R.string.quick_presets),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface
@@ -409,7 +411,7 @@ fun PreviewScreen(
                                     onTargetSizeChanged(kb * 1024L)
                                 }
                             },
-                            label = { Text("Exact Target Size (in KB)") },
+                            label = { Text(stringResource(R.string.exact_target_size_label)) },
                             suffix = { Text("KB", fontWeight = FontWeight.Bold, color = Cyan50) },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                             singleLine = true,
@@ -447,7 +449,7 @@ fun PreviewScreen(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = if (showCustomSlider) "Hide Custom Slider" else "Fine-Tune: Custom Quality Slider",
+                    text = stringResource(if (showCustomSlider) R.string.custom_slider_toggle_hide else R.string.custom_slider_toggle_show),
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.primary
                 )

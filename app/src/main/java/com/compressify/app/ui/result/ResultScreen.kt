@@ -48,9 +48,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.compressify.app.R
 import com.compressify.app.data.model.CompressionResult
 import com.compressify.app.ui.components.AppTopBar
 import com.compressify.app.ui.components.ComparisonViewer
@@ -98,7 +100,7 @@ fun ResultScreen(
         modifier = modifier.fillMaxSize(),
         topBar = {
             AppTopBar(
-                title = "Compression Result",
+                title = stringResource(R.string.result_title),
                 showBrandLogo = false,
                 onBackClick = onBackClick
             )
@@ -141,15 +143,21 @@ fun ResultScreen(
                                     modifier = Modifier.size(20.dp)
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Text("Saving…", fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = stringResource(R.string.saving),
+                                    fontWeight = FontWeight.Bold
+                                )
                             } else if (isSaved) {
                                 Icon(
                                     imageVector = Icons.Filled.Check,
-                                    contentDescription = null,
+                                    contentDescription = "Saved successfully",
                                     modifier = Modifier.size(20.dp)
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Text("Saved!", fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = stringResource(R.string.saved),
+                                    fontWeight = FontWeight.Bold
+                                )
                             } else {
                                 Icon(
                                     imageVector = Icons.Filled.Download,
@@ -157,7 +165,10 @@ fun ResultScreen(
                                     modifier = Modifier.size(20.dp)
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Text("Save Image", fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = stringResource(R.string.save_image),
+                                    fontWeight = FontWeight.Bold
+                                )
                             }
                         }
 
@@ -178,7 +189,7 @@ fun ResultScreen(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Share",
+                                text = stringResource(R.string.share_image),
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.primary
                             )
@@ -206,7 +217,7 @@ fun ResultScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Compress Another Image",
+                            text = stringResource(R.string.compress_another),
                             style = MaterialTheme.typography.labelLarge,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -230,7 +241,7 @@ fun ResultScreen(
         ) {
             // Hero Savings Banner Card
             Card(
-                shape = RoundedCornerShape(24.dp),
+                shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 ),
@@ -255,7 +266,7 @@ fun ResultScreen(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.TrendingDown,
-                                contentDescription = null,
+                                contentDescription = "Size reduction icon",
                                 tint = Color.White,
                                 modifier = Modifier.size(20.dp)
                             )
@@ -279,7 +290,7 @@ fun ResultScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         SizeStatCard(
-                            label = "ORIGINAL",
+                            label = stringResource(R.string.stat_original),
                             size = Formatters.formatFileSize(result.originalMetadata.byteSize),
                             resolution = result.originalMetadata.resolutionString,
                             isHighlighted = false,
@@ -296,14 +307,14 @@ fun ResultScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                                contentDescription = null,
+                                contentDescription = "Arrow indicating compression",
                                 tint = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.size(18.dp)
                             )
                         }
 
                         SizeStatCard(
-                            label = "COMPRESSED",
+                            label = stringResource(R.string.stat_compressed),
                             size = Formatters.formatFileSize(result.compressedByteSize),
                             resolution = result.compressedResolutionString,
                             isHighlighted = true,
@@ -349,7 +360,7 @@ fun ResultScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Visual Comparison",
+                    text = stringResource(R.string.visual_comparison),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -360,7 +371,7 @@ fun ResultScreen(
                     shape = RoundedCornerShape(6.dp)
                 ) {
                     Text(
-                        text = "TAP TO TOGGLE",
+                        text = stringResource(R.string.tap_to_toggle),
                         style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,

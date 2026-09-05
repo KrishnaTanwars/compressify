@@ -79,17 +79,23 @@ fun AppTopBar(
                 IconButton(
                     onClick = onBackClick,
                     modifier = Modifier
-                        .padding(start = 8.dp)
-                        .size(40.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f))
+                        .padding(start = 4.dp)
+                        .size(48.dp)
                 ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back",
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        modifier = Modifier.size(20.dp)
-                    )
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Navigate back",
+                            tint = MaterialTheme.colorScheme.onBackground,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
                 }
             }
         },
@@ -100,17 +106,23 @@ fun AppTopBar(
                 IconButton(
                     onClick = onSettingsClick,
                     modifier = Modifier
-                        .padding(end = 8.dp)
-                        .size(40.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f))
+                        .padding(end = 4.dp)
+                        .size(48.dp)
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Settings,
-                        contentDescription = "Settings",
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        modifier = Modifier.size(20.dp)
-                    )
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Settings,
+                            contentDescription = "Open Settings",
+                            tint = MaterialTheme.colorScheme.onBackground,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
                 }
             }
         },

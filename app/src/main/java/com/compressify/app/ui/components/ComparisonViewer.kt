@@ -37,6 +37,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.compressify.app.R
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.compressify.app.data.model.CompressionResult
@@ -50,7 +52,7 @@ fun ComparisonViewer(
 
     Card(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(22.dp),
+        shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
@@ -80,7 +82,7 @@ fun ComparisonViewer(
                     onClick = { selectedTab = 0 },
                     text = {
                         Text(
-                            text = "Original",
+                            text = stringResource(R.string.tab_original),
                             style = MaterialTheme.typography.labelLarge,
                             fontWeight = if (selectedTab == 0) FontWeight.Bold else FontWeight.Medium
                         )
@@ -91,7 +93,7 @@ fun ComparisonViewer(
                     onClick = { selectedTab = 1 },
                     text = {
                         Text(
-                            text = "Compressed",
+                            text = stringResource(R.string.tab_compressed),
                             style = MaterialTheme.typography.labelLarge,
                             fontWeight = if (selectedTab == 1) FontWeight.Bold else FontWeight.Medium
                         )

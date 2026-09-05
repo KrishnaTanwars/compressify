@@ -1,39 +1,107 @@
 <resources>
     <string name="app_name">Compressify</string>
-    <string name="app_tagline">Professional Image Compressor &amp; Optimizer</string>
-    <string name="home_supporting_text">Reduce image size up to 90% while keeping original visual quality. 100% on-device and private.</string>
-    <string name="home_badge_text">100% On-Device • Zero Server Uploads • Ultra Fast</string>
-    <string name="select_image">Select Image to Compress</string>
-    <string name="select_another_image">Select Another Image</string>
-    <string name="compress_image">Compress Image Now</string>
+    <string name="app_tagline">Image Compressor &amp; Optimizer</string>
+    <string name="developer_name">Tanwar Labs</string>
+    <string name="developer_attribution">Crafted with precision by Tanwar Labs</string>
+    <string name="support_email">tanwarlabs@gmail.com</string>
+    <string name="support_email_subject">Compressify Support &amp; Feedback</string>
+    <string name="support_chooser_title">Contact Support</string>
+
+    <!-- Home Screen -->
+    <string name="home_supporting_text">Reduce image size up to 90% while keeping original visual clarity. 100% on-device and private.</string>
+    <string name="home_badge_text">100% On-Device • Zero Server Uploads • Fast &amp; Private</string>
+    <string name="home_card_title">Choose Photo to Compress</string>
+    <string name="home_card_subtitle">Reduce file size by up to 90% without losing visual clarity</string>
+    <string name="select_photo">Select Photo</string>
+    <string name="select_another_photo">Select Another Photo</string>
     <string name="compressing">Optimizing Image…</string>
-    <string name="save_image">Save to Gallery</string>
-    <string name="share_image">Share Image</string>
-    <string name="image_saved_success">Saved to Pictures/Compressify</string>
-    <string name="save_failed">Failed to save image. Please check available storage space.</string>
-    <string name="share_failed">Unable to share image.</string>
-    
+    <string name="feature_lossless_title">Lossless Perceptual Clarity</string>
+    <string name="feature_lossless_desc">Smart downsampling preserves fine details while shedding megabytes.</string>
+    <string name="feature_target_title">Target File Size Mode</string>
+    <string name="feature_target_desc">Compress to an exact file size (e.g. 100 KB, 500 KB) for portal limits.</string>
+    <string name="feature_privacy_title">100% Offline &amp; Private</string>
+    <string name="feature_privacy_desc">Zero cloud uploads. All processing takes place entirely on your device.</string>
+    <string name="trust_badge">100% On-Device • Zero Server Uploads • Scoped Storage</string>
+
+    <!-- Preview & Configuration Screen -->
+    <string name="preview_title">Compression Settings</string>
+    <string name="metric_original_size">ORIGINAL SIZE</string>
+    <string name="metric_resolution">RESOLUTION</string>
+    <string name="compression_level">Compression Level</string>
+    <string name="select_one">SELECT ONE</string>
+    <string name="compress_image">Compress Image</string>
+    <string name="compressing_now">Compressing…</string>
+    <string name="target_size_info">Set a maximum file size limit. Compressify will downscale and compress to keep the output beneath it.</string>
+    <string name="quick_presets">Quick Presets:</string>
+    <string name="exact_target_size_label">Exact Target Size</string>
+    <string name="custom_slider_toggle_show">Fine-Tune Quality Slider</string>
+    <string name="custom_slider_toggle_hide">Hide Quality Slider</string>
+    <string name="custom_quality_title">Custom Quality</string>
+
     <!-- Presets -->
     <string name="preset_high_quality">High Quality</string>
     <string name="preset_high_quality_desc">Best visual fidelity • Minor size reduction</string>
+    <string name="preset_high_quality_badge">ULTRA HD</string>
     
-    <string name="preset_balanced">Balanced Optimization</string>
+    <string name="preset_balanced">Balanced</string>
     <string name="preset_balanced_desc">Recommended • Optimal balance of quality &amp; size</string>
+    <string name="preset_balanced_badge">RECOMMENDED</string>
     
     <string name="preset_small_size">Maximum Compression</string>
-    <string name="preset_small_size_desc">Smallest possible file • Ideal for email &amp; web</string>
+    <string name="preset_small_size_desc">Smallest possible file • Ideal for forms &amp; email</string>
+    <string name="preset_small_size_badge">MAX SAVINGS</string>
     
     <string name="preset_target_size">Target File Size</string>
     <string name="preset_target_size_desc">Compress to exact target size (e.g. 100 KB, 500 KB, 1 MB)</string>
+    <string name="preset_target_size_badge">EXACT KB</string>
 
     <string name="preset_custom">Custom Quality</string>
     <string name="preset_custom_desc">Fine-tune compression slider to your exact preference</string>
 
-    <!-- Error strings -->
-    <string name="error_image_too_large">This photo is too large to process safely on this device. Please choose another image.</string>
-    <string name="error_unsupported_format">Unsupported photo format. Please select a JPG, JPEG, PNG, or WebP photo.</string>
-    <string name="error_generic">Unable to process photo. Please try again.</string>
+    <!-- Result Screen -->
+    <string name="result_title">Compression Result</string>
+    <string name="stat_original">ORIGINAL</string>
+    <string name="stat_compressed">COMPRESSED</string>
+    <string name="visual_comparison">Visual Comparison</string>
+    <string name="tap_to_toggle">TAP TO TOGGLE</string>
+    <string name="tab_original">Original</string>
+    <string name="tab_compressed">Compressed</string>
+    <string name="save_image">Save to Gallery</string>
+    <string name="saving">Saving…</string>
+    <string name="saved">Saved to Gallery</string>
+    <string name="share_image">Share</string>
+    <string name="compress_another">Compress Another Image</string>
+    <string name="image_saved_success">Saved to Pictures/Compressify</string>
 
-    <!-- Privacy Statement -->
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="section_preferences">Preferences</string>
+    <string name="theme_setting_title">App Theme</string>
+    <string name="default_preset_setting_title">Default Compression Level</string>
+    <string name="save_location_title">Save Location</string>
+    <string name="save_location_subtitle">Pictures/Compressify (Scoped Storage)</string>
+    <string name="section_support">Support &amp; Feedback</string>
+    <string name="contact_support_title">Contact Support</string>
+    <string name="contact_support_subtitle">Have questions or feedback? Email Tanwar Labs</string>
+    <string name="section_about">About &amp; Privacy</string>
+    <string name="privacy_guarantee_title">Privacy &amp; Security Guarantee</string>
+    <string name="privacy_guarantee_subtitle">100% on-device local compression, zero server uploads</string>
+    <string name="app_version_title">Version</string>
+
+    <!-- Privacy Dialog -->
+    <string name="privacy_dialog_title">Privacy &amp; Security Guarantee</string>
+    <string name="privacy_dialog_badge">🔒 100% On-Device Local Processing</string>
+    <string name="privacy_dialog_p1">Your photos are processed entirely on your device and are never uploaded to any external server or cloud.</string>
+    <string name="privacy_dialog_bullets">• Zero Cloud Uploads: Compression runs locally in memory.\n• Zero Account Required: No logins, signups, or profiles.\n• Zero Analytics Tracking: We do not track or inspect your photos.\n• Scoped Storage: Output is saved strictly to Pictures/Compressify.</string>
+    <string name="privacy_dialog_footer">Your photos remain private, secure, and under your control.</string>
+    <string name="privacy_dialog_button">Got It</string>
     <string name="privacy_statement">🔒 Privacy Guarantee: Your images are processed 100% locally on your device and are never uploaded to any cloud server.</string>
+
+    <!-- Errors & Feedback -->
+    <string name="error_image_too_large">This photo is too large to process safely on this device. Please choose another image.</string>
+    <string name="error_unsupported_format">Unsupported photo format. Please select a JPG, PNG, or WebP photo.</string>
+    <string name="error_generic">Couldn\'t process the image. Please try again.</string>
+    <string name="error_read_image">Couldn\'t read this image. Please select a valid photo.</string>
+    <string name="save_failed">Couldn\'t save image. Please check available storage space.</string>
+    <string name="share_failed">Unable to share image.</string>
 </resources>

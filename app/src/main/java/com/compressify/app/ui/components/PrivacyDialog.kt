@@ -21,6 +21,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.compressify.app.ui.theme.Emerald50
 
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.sp
+import com.compressify.app.R
+
 @Composable
 fun PrivacyDialog(
     onDismissRequest: () -> Unit
@@ -29,7 +33,7 @@ fun PrivacyDialog(
         onDismissRequest = onDismissRequest,
         title = {
             Text(
-                text = "Privacy & Security Guarantee",
+                text = stringResource(R.string.privacy_dialog_title),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
@@ -44,12 +48,12 @@ fun PrivacyDialog(
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f)
                     ),
-                    shape = RoundedCornerShape(14.dp),
+                    shape = RoundedCornerShape(12.dp),
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
                 ) {
                     Text(
-                        text = "🔒 100% On-Device Local Processing",
-                        style = MaterialTheme.typography.titleSmall,
+                        text = stringResource(R.string.privacy_dialog_badge),
+                        style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.padding(12.dp)
@@ -59,27 +63,24 @@ fun PrivacyDialog(
                 Spacer(modifier = Modifier.height(14.dp))
 
                 Text(
-                    text = "Your images are processed entirely on your device and are NEVER uploaded to any servers or external clouds.",
+                    text = stringResource(R.string.privacy_dialog_p1),
                     style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "• Zero Cloud Uploads: Compression runs locally in memory.\n" +
-                            "• Zero Account Required: No logins, passwords, or personal profiles.\n" +
-                            "• Zero Analytics Tracking: We do not track or inspect your photos.\n" +
-                            "• Scoped Storage: We only write compressed output to Pictures/Compressify when you choose to save.",
+                    text = stringResource(R.string.privacy_dialog_bullets),
                     style = MaterialTheme.typography.bodySmall,
+                    lineHeight = 20.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
                 Spacer(modifier = Modifier.height(14.dp))
 
                 Text(
-                    text = "Your photos remain private and safe.",
+                    text = stringResource(R.string.privacy_dialog_footer),
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.Bold,
                     color = Emerald50
@@ -89,16 +90,17 @@ fun PrivacyDialog(
         confirmButton = {
             TextButton(
                 onClick = onDismissRequest,
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.height(48.dp)
             ) {
                 Text(
-                    text = "Understood",
+                    text = stringResource(R.string.privacy_dialog_button),
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary
                 )
             }
         },
-        shape = RoundedCornerShape(22.dp),
+        shape = RoundedCornerShape(20.dp),
         containerColor = MaterialTheme.colorScheme.surface
     )
 }

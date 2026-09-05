@@ -47,6 +47,11 @@ import com.compressify.app.ui.theme.Cyan50
 import com.compressify.app.ui.theme.Emerald50
 import com.compressify.app.ui.theme.Indigo50
 
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
+
 @Composable
 fun PresetCard(
     preset: CompressionPreset,
@@ -81,11 +86,17 @@ fun PresetCard(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .clickable(onClick = onSelect),
-        shape = RoundedCornerShape(18.dp),
+            .clip(RoundedCornerShape(16.dp))
+            .clickable(
+                onClick = onSelect,
+                role = Role.RadioButton
+            )
+            .semantics {
+                this.selected = isSelected
+            },
+        shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = containerColor),
-        border = BorderStroke(if (isSelected) 1.75.dp else 1.dp, borderColor)
+        border = BorderStroke(if (isSelected) 1.5.dp else 1.dp, borderColor)
     ) {
         Row(
             modifier = Modifier

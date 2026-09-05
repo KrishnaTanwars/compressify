@@ -162,7 +162,7 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Compressify",
+                text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.ExtraBold,
                 color = MaterialTheme.colorScheme.onBackground,
@@ -173,32 +173,32 @@ fun HomeScreen(
 
             Surface(
                 color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f),
-                shape = RoundedCornerShape(20.dp)
+                shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
-                    text = "Professional Image Compressor & Optimizer",
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = FontWeight.Bold,
+                    text = stringResource(R.string.developer_attribution),
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp)
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp)
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             // Interactive Upload / Select Card
             Card(
-                shape = RoundedCornerShape(24.dp),
+                shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 ),
                 border = BorderStroke(
                     1.5.dp,
-                    MaterialTheme.colorScheme.outline.copy(alpha = 0.6f)
+                    MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(24.dp))
+                    .clip(RoundedCornerShape(20.dp))
                     .clickable(enabled = !isLoading) {
                         photoPickerLauncher.launch(
                             PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
@@ -223,7 +223,7 @@ fun HomeScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Filled.AddPhotoAlternate,
-                            contentDescription = null,
+                            contentDescription = "Select photo icon",
                             tint = Color.White,
                             modifier = Modifier.size(32.dp)
                         )
@@ -232,7 +232,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = "Choose Photo to Compress",
+                        text = stringResource(R.string.home_card_title),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface,
@@ -242,7 +242,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(6.dp))
 
                     Text(
-                        text = "Reduce image file size by up to 90% without losing visual clarity",
+                        text = stringResource(R.string.home_card_subtitle),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = TextAlign.Center,
@@ -312,7 +312,7 @@ fun HomeScreen(
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
-                                text = "Select Image from Gallery",
+                                text = stringResource(R.string.select_photo),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold
                             )
@@ -331,20 +331,20 @@ fun HomeScreen(
                 FeatureRow(
                     icon = Icons.Filled.AutoAwesome,
                     iconColor = Indigo50,
-                    title = "Lossless Perceptual Clarity",
-                    description = "Smart downsampling preserves fine details while shedding megabytes."
+                    title = stringResource(R.string.feature_lossless_title),
+                    description = stringResource(R.string.feature_lossless_desc)
                 )
                 FeatureRow(
                     icon = Icons.Filled.TrackChanges,
                     iconColor = Cyan50,
-                    title = "Target File Size Mode",
-                    description = "Compress to an exact file size (e.g. 100 KB, 500 KB) for portal limits."
+                    title = stringResource(R.string.feature_target_title),
+                    description = stringResource(R.string.feature_target_desc)
                 )
                 FeatureRow(
                     icon = Icons.Filled.Lock,
                     iconColor = Emerald50,
-                    title = "100% Offline & Private",
-                    description = "Zero cloud uploads. All processing takes place entirely on your device."
+                    title = stringResource(R.string.feature_privacy_title),
+                    description = stringResource(R.string.feature_privacy_desc)
                 )
             }
 
@@ -353,7 +353,7 @@ fun HomeScreen(
             // Bottom Trust Badge
             Surface(
                 color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f),
-                shape = RoundedCornerShape(14.dp),
+                shape = RoundedCornerShape(12.dp),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.25f)),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -368,13 +368,13 @@ fun HomeScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Filled.WifiOff,
-                        contentDescription = null,
+                        contentDescription = "Offline indicator",
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "100% On-Device • Zero Server Uploads • Scoped Storage",
+                        text = stringResource(R.string.trust_badge),
                         style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onSurfaceVariant

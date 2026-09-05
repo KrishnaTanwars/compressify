@@ -1,5 +1,7 @@
 package com.compressify.app.ui.settings
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,10 +22,12 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.outlined.DarkMode
+import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Folder
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Tune
+import androidx.compose.material.icons.outlined.Verified
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -44,6 +48,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -66,6 +71,7 @@ fun SettingsScreen(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     var showPrivacyDialog by remember { mutableStateOf(false) }
     var showThemeMenu by remember { mutableStateOf(false) }
     var showPresetMenu by remember { mutableStateOf(false) }
@@ -78,7 +84,7 @@ fun SettingsScreen(
         modifier = modifier.fillMaxSize(),
         topBar = {
             AppTopBar(
-                title = "Settings",
+                title = stringResource(R.string.settings_title),
                 showBrandLogo = false,
                 onBackClick = onBackClick
             )
@@ -93,10 +99,10 @@ fun SettingsScreen(
                 .padding(16.dp)
         ) {
             // Preferences Section
-            SettingsSectionHeader(title = "Compression & Theme")
+            SettingsSectionHeader(title = stringResource(R.string.section_preferences))
 
             Card(
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
                 modifier = Modifier.fillMaxWidth()
@@ -106,7 +112,7 @@ fun SettingsScreen(
                     SettingsRow(
                         icon = Icons.Outlined.DarkMode,
                         iconTint = Indigo50,
-                        title = "App Theme",
+                        title = stringResource(R.string.theme_setting_title),
                         subtitle = themeMode.title,
                         onClick = { showThemeMenu = true }
                     ) {
@@ -135,7 +141,7 @@ fun SettingsScreen(
                     SettingsRow(
                         icon = Icons.Outlined.Tune,
                         iconTint = Cyan50,
-                        title = "Default Compression Level",
+                        title = stringResource(R.string.default_preset_setting_title),
                         subtitle = defaultPreset.title,
                         onClick = { showPresetMenu = true }
                     ) {
@@ -169,31 +175,79 @@ fun SettingsScreen(
                     SettingsRow(
                         icon = Icons.Outlined.Folder,
                         iconTint = Emerald50,
-                        title = "Save Location",
-                        subtitle = "Pictures/Compressify (Scoped Storage)",
+                        title = stringResource(R.string.save_location_title),
+                        subtitle = stringResource(R.string.save_location_subtitle),
                         onClick = {}
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-            // About & Privacy Section
-            SettingsSectionHeader(title = "About & Guarantee")
+            // Support & Feedback Section
+            SettingsSectionHeader(title = stringResource(R.string.section_support))
 
             Card(
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column {
-                    // Privacy Policy
+                    SettingsRow(
+                        icon = Icons.Outlined.Email,
+                        iconTint = Cyan50,
+                        title = stringResource(R.string.contact_support_title),
+                        subtitle = stringResource(R.string.contact_support_subtitle),
+                        onClick = {
+                            val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+                                data = Uri.parse("mailto:${context.getString(R.string.support_email)}")
+                                putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.support_email_subject))
+                            }
+                            try {
+                                context.startActivity(
+                                    Intent.createChooser(emailIntent, context.getString(R.string.support_chooser_title))
+                                )
+                            } catch (e: Exception) {
+                                // No email client available
+                            }
+                        }
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            // About & Privacy Section
+            SettingsSectionHeader(title = stringResource(R.string.section_about))
+
+            Card(
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column {
+                    // Developer Attribution (Tanwar Labs)
+                    SettingsRow(
+                        icon = Icons.Outlined.Verified,
+                        iconTint = Indigo50,
+                        title = stringResource(R.string.developer_name),
+                        subtitle = stringResource(R.string.developer_attribution),
+                        onClick = {}
+                    )
+
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+
+                    // Privacy Policy Guarantee
                     SettingsRow(
                         icon = Icons.Outlined.Lock,
                         iconTint = Emerald50,
-                        title = "Privacy & Security Guarantee",
-                        subtitle = "100% on-device local compression, zero server uploads",
+                        title = stringResource(R.string.privacy_guarantee_title),
+                        subtitle = stringResource(R.string.privacy_guarantee_subtitle),
                         onClick = { showPrivacyDialog = true }
                     )
 
@@ -206,19 +260,19 @@ fun SettingsScreen(
                     SettingsRow(
                         icon = Icons.Outlined.Info,
                         iconTint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        title = "Version",
+                        title = stringResource(R.string.app_version_title),
                         subtitle = "1.0.0",
                         onClick = {}
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             // Privacy Commitment Callout
             Surface(
                 color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(14.dp),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
